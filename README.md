@@ -9,7 +9,7 @@ https://www.kaggle.com/austinreese/craigslist-carstrucks-data
 Data is extracted to vehicles.csv
 
 #### View Analysis notebook
-AUsedCarsDeepEDAProcessing.ipynb is the Jupyter notebook
+UsedCarsDeepEDAProcessing.ipynb is the Jupyter notebook
 
 #### Generate slide deck from notebook
 `jupyter nbconvert UsedCarsDeepEDAProcessing.ipynb --to slides`
