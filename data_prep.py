@@ -17,6 +17,7 @@ bucketize_columns = ['car_age','odometer']
 cat_columns = ['manufacturer','condition', 'cylinders', 'fuel','title_status',\
                'transmission', 'drive', 'size', 'type', 'paint_color','state',\
                'car_age_bckt','odometer_bckt']
+numeric_columns = ['car_age','odometer']
 high_cardinality_cols = ['model','region']
 odo_bins=[0, 5000, 30000, 60000, 100000, 150000, 200000,400000,5000000]
 #grp_cols = ['fuel','transmission','type','manufacturer']
@@ -66,7 +67,7 @@ def calculate_car_age(dframe):
 
 def custom_clean_up(dframe):
     print('   === CCLean')
-    return dframe[['id']+cat_columns+['price']]
+    return dframe[['id']+cat_columns+numeric_columns+['price']]
 
 
 def process_raw_data(raw_car_data):
@@ -83,8 +84,8 @@ def process_raw_data(raw_car_data):
                              )
     return processed_car_data
 
-def run_processing_pipeline(run_eda = False):
-    raw_car_data = pd.read_csv('vehicles.csv')
+def run_processing_pipeline(raw_car_data,run_eda = False):
+    #raw_car_data = pd.read_csv('vehicles.csv')
     processed_car_data = process_raw_data(raw_car_data)
     if run_eda:
         process_all_groups(processed_car_data,cat_columns_agg,'price',agg_list)
